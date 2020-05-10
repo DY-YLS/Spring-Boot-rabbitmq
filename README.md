@@ -300,7 +300,8 @@ public class RabbitTest {
 }
 ```
 
-## 如何设置生产者消息确认，避免消息发送失败而丢失
+## 如何设置生产者消息确认，避免消息发送失败而丢失(确认分为两步，一是确认是否到达交换器，二是确认是否到达队列。)
+>参考资料：[https://www.cnblogs.com/wangiqngpei557/p/9381478.html](https://www.cnblogs.com/wangiqngpei557/p/9381478.html)
 1. 在配置文件中添加
 ```yaml
 spring:
@@ -366,11 +367,17 @@ public class ProducerConfig {
             rabbitTemplate.convertAndSend(exchange, routingKey, new String(message.getBody()));
             System.out.println("重新发送消息： -----" + new String(message.getBody()));
         });
+
+        /**
+         * 网上都说必须设置rabbitTemplate.setMandatory(true),才能触发ReturnCallback回调，
+         * 我尝试了一下，并不需要设置为true,交换机发送消息给队列失败时，也能触发回调
+         */
+        //rabbitTemplate.setMandatory(true);
     }
 }
 ```
 
-
+> [代码github地址:https://github.com/1612480331/Spring-Boot-rabbitmq](https://github.com/1612480331/Spring-Boot-rabbitmq)
 
 
 

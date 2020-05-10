@@ -63,5 +63,11 @@ public class ProducerConfig {
             rabbitTemplate.convertAndSend(exchange, routingKey, new String(message.getBody()));
             System.out.println("重新发送消息： -----" + new String(message.getBody()));
         });
+
+        /**
+         * 网上都说必须设置rabbitTemplate.setMandatory(true),才能触发ReturnCallback回调，
+         * 我尝试了一下，并不需要设置为true,交换机发送消息给队列失败时，也能触发回调
+         */
+        //rabbitTemplate.setMandatory(true);
     }
 }

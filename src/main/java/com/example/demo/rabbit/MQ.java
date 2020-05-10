@@ -23,11 +23,11 @@ public class MQ {
      *
      * @param msg
      */
-    @RabbitListener(queuesToDeclare = @Queue(value = "simpleQueue", durable = "true"))
+/*    @RabbitListener(queuesToDeclare = @Queue(value = "simpleQueue", durable = "true"))
     public void simpleQueue(String msg) {
 //        int i=2/0;
         System.out.println("接收  " + msg);
-    }
+    }*/
 
 
     /**
