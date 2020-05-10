@@ -1,0 +1,19 @@
+spring:
+  mail:
+    host: smtp.qq.com  #发送邮件服务器
+    username: 1329926763@qq.com
+    password: gvltqgtxtmiricff  #授权码
+    properties:
+      from: 1329926763@qq.com  #发送邮件的地址
+  rabbitmq:        #rabbit连接配置信息
+    host: 39.97.234.52
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host:  /vhost_1
+    publisher-returns: true             #开启消息从 交换机----》队列发送失败的回调
+    publisher-confirm-type: correlated  #开启消息从 生产者----》交换机的回调
+
+#  data:
+#    mongodb:
+#      uri: mongodb://39.97.234.52:27017/test
