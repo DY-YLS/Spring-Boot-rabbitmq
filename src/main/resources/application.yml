@@ -13,9 +13,10 @@ spring:
     virtual-host:  /vhost_1
     publisher-returns: true             #开启消息从 交换机----》队列发送失败的回调
     publisher-confirm-type: correlated  #开启消息从 生产者----》交换机的回调
-    template:
-      mandatory:
 
 #  data:
 #    mongodb:
 #      uri: mongodb://39.97.234.52:27017/test
+
+elasticsearch:
+  hostList: localhost:9200 #多个节点用逗号隔开
